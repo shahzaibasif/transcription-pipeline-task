@@ -218,7 +218,7 @@ Faster-Whisper provides nearly the same transcription accuracy as Whisper while 
 
 ---
 
-# How do you handle different audio formats?
+## How do you handle different audio formats?
 
 The pipeline accepts common audio formats such as WAV, MP3, M4A, FLAC, AAC, and OGG.
 
@@ -232,7 +232,7 @@ Using a standardized format improves transcription quality and avoids inconsiste
 
 ---
 
-# How do you deal with long audio files?
+## How do you deal with long audio files?
 
 Long recordings are processed using **chunking**.
 
@@ -272,7 +272,7 @@ Advantages:
 
 ---
 
-# How would you handle concurrent uploads?
+## How would you handle concurrent uploads?
 
 For production deployments I would expose the service through FastAPI and process transcription jobs asynchronously.
 
@@ -309,7 +309,7 @@ Benefits:
 
 ---
 
-# How would you store audio and transcripts?
+## How would you store audio and transcripts?
 
 Audio files and transcripts have different storage requirements.
 
@@ -343,7 +343,7 @@ This separation improves scalability.
 
 ---
 
-# How do you retry or recover failed transcriptions?
+## How do you retry or recover failed transcriptions?
 
 Every transcription job has a status.
 
@@ -385,7 +385,7 @@ Permanent failures such as corrupted audio are not retried.
 
 ---
 
-# How would you expose this as an API?
+## How would you expose this as an API?
 
 FastAPI REST API
 
@@ -441,7 +441,7 @@ Response
 
 ---
 
-# Error Handling
+## Error Handling
 
 The pipeline gracefully handles:
 
@@ -456,7 +456,7 @@ Every error returns an informative message.
 
 ---
 
-# Logging
+## Logging
 
 Each pipeline stage is logged.
 
@@ -478,7 +478,7 @@ Logs make debugging and monitoring easier.
 
 ---
 
-# Security Considerations
+## Security Considerations
 
 For production deployments, implement:
 
@@ -492,7 +492,7 @@ For production deployments, implement:
 
 ---
 
-# Scalability
+## Scalability
 
 To support thousands of transcription requests:
 
@@ -507,7 +507,7 @@ To support thousands of transcription requests:
 
 ---
 
-# Future Improvements
+## Future Improvements
 
 Possible enhancements include:
 
@@ -522,7 +522,7 @@ Possible enhancements include:
 
 ---
 
-# Assumptions
+## Assumptions
 
 This implementation assumes:
 
@@ -534,9 +534,9 @@ This implementation assumes:
 
 ---
 
-# Conclusion
+## Conclusion
 
 This project demonstrates a complete engineering solution for a speech-to-text pipeline. The system is modular, scalable, and designed with production best practices in mind. By separating preprocessing, transcription, post-processing, and export into independent components, the architecture remains maintainable and extensible. The use of asynchronous processing, structured storage, robust error handling, and a REST API enables the solution to scale from a simple command-line utility to a production-grade transcription service.
 
-# Author
+## Author
 Shahzaib Asif
