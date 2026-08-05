@@ -31,7 +31,6 @@ The pipeline provides the following functionality:
 | Language | Python 3.12 |
 | Speech-to-Text | Faster-Whisper |
 | Audio Processing | Pydub + FFmpeg |
-| API | FastAPI |
 
 ---
 
