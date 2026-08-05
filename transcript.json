@@ -1,0 +1,11 @@
+{
+    "language": "en",
+    "text": "Hello everyone. Welcome to today's meeting. We will discuss the project roadmap.",
+    "segments": [
+        {
+            "start": 0.0,
+            "end": 7.0,
+            "text": "Hello everyone. Welcome to today's meeting. We will discuss the project roadmap."
+        }
+    ]
+}
