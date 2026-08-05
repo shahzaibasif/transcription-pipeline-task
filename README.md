@@ -102,7 +102,8 @@ The system accepts audio files in the following formats:
 - WAV
 - MP3
 
-later support for M4A, FLAC, OGG, and AAC can be added.
+`later support for M4A, FLAC, OGG, and AAC can be added.`
+
 ---
 
 ## 2. Audio Validation
