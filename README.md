@@ -539,4 +539,4 @@ This implementation assumes:
 This project demonstrates a complete engineering solution for a speech-to-text pipeline. The system is modular, scalable, and designed with production best practices in mind. By separating preprocessing, transcription, post-processing, and export into independent components, the architecture remains maintainable and extensible. The use of asynchronous processing, structured storage, robust error handling, and a REST API enables the solution to scale from a simple command-line utility to a production-grade transcription service.
 
 ## Author
-Shahzaib Asif
+Shahzaib Asif @ [Email](mailto:shahzaib.asif024@gmail.com)
