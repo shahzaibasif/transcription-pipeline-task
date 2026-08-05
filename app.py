@@ -13,8 +13,6 @@ SUPPORTED_FORMATS = {".wav", ".mp3"}
 LONG_AUDIO_THRESHOLD_MINUTES = 2
 CHUNK_DURATION_MINUTES = 1
 
-
-
 def process_normal_audio(audio_path):
 
     processed = preprocess_audio(audio_path)
