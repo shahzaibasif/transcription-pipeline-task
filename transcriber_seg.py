@@ -45,7 +45,7 @@ def transcribe_audio(audio_path):
 
 if __name__ == "__main__":
 
-    audio_file = "audio/sample.mp3"
+    audio_file = "audio/sample2.mp3"
     extension = os.path.splitext(audio_file)[1].lower()
 
     if extension not in SUPPORTED_FORMATS:

@@ -278,19 +278,29 @@ For production deployments I would expose the service through FastAPI and proces
 Architecture:
 
 ```
-Client
-    │
-    ▼
-FastAPI
-    │
-    ▼
-Redis Queue
-    │
-    ▼
-Celery Workers
-    │
-    ▼
-Whisper Model
+        Clients
+           │
+           ▼
+     FastAPI REST API
+           │
+           ▼
+     Upload & Validate
+           │
+           ▼
+      Message Queue
+ (Celery + Redis/RabbitMQ)
+           │
+           ▼
+   Multiple Worker Processes
+           │
+           ▼
+      Whisper Transcription
+           │
+           ▼
+   Store Results (JSON/DB)
+           │
+           ▼
+      Client Retrieves Result
 ```
 
 Workflow:
@@ -322,8 +332,27 @@ Examples:
 - Azure Blob Storage
 - Google Cloud Storage
 
-Object storage is optimized for large binary files.
+```
+For a production system, I would store audio files and transcripts separately because they have different storage and access patterns.
 
+Client
+   │
+   ▼
+Upload API
+   │
+   ├──────────────► Object Storage (Audio Files)
+   │                  • AWS S3
+   │                  • Azure Blob Storage
+   │                  • Google Cloud Storage
+   │
+   ▼
+Transcription Worker
+   │
+   ▼
+Database (Metadata & Transcripts)
+    • PostgreSQL
+    • MongoDB
+```
 ### Transcript
 
 Store inside PostgreSQL or MongoDB.
@@ -382,11 +411,55 @@ Failed
 
 Permanent failures such as corrupted audio are not retried.
 
+Architecture:
+
+```
+    Upload
+    │
+    ▼
+    Queue Job
+    │
+    ▼
+    Worker Starts
+    │
+    ├── Success ─────────► Completed
+    │
+    └── Failure
+            │
+            ▼
+    Retry (Max 3 Attempts)
+            │
+        ┌───┴────┐
+        │        │
+    Success     Failed
+        │        │
+    Completed   Log Error & Notify User
+```
+
 ---
 
 ## How would you expose this as an API?
 
-FastAPI REST API
+I would expose it as a REST API using FastAPI, keeping the API lightweight while offloading transcription to background workers for scalability.
+```
+Client
+   │
+   ▼
+FastAPI
+   │
+   ├── POST /transcribe
+   ├── GET  /jobs/{job_id}
+   └── GET  /jobs/{job_id}/result
+           │
+           ▼
+    Queue (Celery/Redis)
+           │
+           ▼
+   Whisper Worker
+           │
+           ▼
+ Database + Object Storage
+```
 
 ### Upload
 
@@ -440,44 +513,7 @@ Response
 
 ---
 
-## Error Handling
-
-The pipeline gracefully handles:
-
-- Unsupported formats
-- Missing files
-- Corrupted files
-- Empty audio
-- No speech detected
-- Whisper inference failures
-
-Every error returns an informative message.
-
----
-
-## Logging
-
-Each pipeline stage is logged.
-
-Example:
-
-```
-INFO Audio uploaded
-
-INFO Preprocessing
-
-INFO Running transcription
-
-INFO Saving transcript
-
-INFO Completed
-```
-
-Logs make debugging and monitoring easier.
-
----
-
-## Security Considerations
+<!-- ## Security Considerations
 
 For production deployments, implement:
 
@@ -529,7 +565,7 @@ This implementation assumes:
 - FFmpeg is installed.
 - Whisper models are downloaded automatically if not found locally.
 - Timestamp accuracy is sufficient for downstream NLP applications.
-- Internet access is only required for the initial model download.
+- Internet access is only required for the initial model download. -->
 
 ---
 
