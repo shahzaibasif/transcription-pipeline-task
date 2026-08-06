@@ -10,7 +10,7 @@ LANGUAGE = "en"  # Default language for transcription
 SUPPORTED_FORMATS = {".wav", ".mp3"}
 
 # Audio longer than this threshold will be chunked
-LONG_AUDIO_THRESHOLD_MINUTES = 10
+LONG_AUDIO_THRESHOLD_MINUTES = 1
 CHUNK_DURATION_MINUTES = 1
 
 def process_normal_audio(audio_path):
