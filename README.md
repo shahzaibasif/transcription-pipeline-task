@@ -569,9 +569,40 @@ This implementation assumes:
 
 ---
 
+## Streamlit Frontend UI
+
+A lightweight Streamlit frontend is included as `ui_app.py` to upload audio files, run the project's preprocessing and transcription pipeline, and download/save transcripts.
+
+Quick steps to run the UI locally:
+
+1. (Optional) Create and activate a virtual environment for Python 3.12.
+
+2. Install project dependencies and Streamlit:
+
+```bash
+pip install -r requirements.txt
+pip install streamlit
+```
+
+3. Ensure `ffmpeg` is installed and available on your PATH (required by `pydub`). On Windows you can download FFmpeg from https://ffmpeg.org/ and add it to PATH.
+
+4. Start the Streamlit app from the project root:
+
+```bash
+streamlit run ui_app.py
+```
+
+5. In the browser UI, upload a WAV or MP3 file, choose language/multilingual options if needed, then click "Start Transcription". You can view segments, download the transcript, or save it to the `output/` folder.
+
+Notes:
+- The UI calls the same pipeline code used by `app.py` and expects model files under the `models/` directory.
+- Transcription may take several minutes depending on your CPU and which Faster-Whisper model is used.
+
+
 ## Conclusion
 
 This project demonstrates a complete engineering solution for a speech-to-text pipeline. The system is modular, scalable, and designed with production best practices in mind. By separating preprocessing, transcription, post-processing, and export into independent components, the architecture remains maintainable and extensible. The use of asynchronous processing, structured storage, robust error handling, and a REST API enables the solution to scale from a simple command-line utility to a production-grade transcription service.
+
 
 ## Author
 Shahzaib Asif @ [Email](mailto:shahzaib.asif024@gmail.com)
