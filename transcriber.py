@@ -2,7 +2,7 @@ import os
 from faster_whisper import WhisperModel
 from pipeline.preprocess import preprocess_audio
 
-SUPPORTED_FORMATS = {".wav", ".mp3"}
+SUPPORTED_FORMATS = {".wav", ".mp3", ".m4a"}
 
 # Load the Whisper model
 model = WhisperModel(

@@ -276,10 +276,10 @@ def main():
         repo_url="https://github.com/shahzaibasif/transcription-pipeline-task",
     )
 
-    st.write("Upload an audio file (WAV or MP3). The app will preprocess and transcribe it.")
+    st.write("Upload an audio file (WAV, MP3, or M4A). The app will preprocess and transcribe it.")
     st.caption("Author and repo info are in the sidebar.")
 
-    uploaded = st.file_uploader("Upload audio", type=["wav", "mp3"])
+    uploaded = st.file_uploader("Upload audio", type=["wav", "mp3", "m4a"])
 
     # Place model, language, and multilingual checkbox on one row (model first)
     col_model, col_lang, col_check = st.columns([2, 2, 1])
@@ -308,8 +308,8 @@ def main():
 
     if uploaded is not None:
         file_ext = os.path.splitext(uploaded.name)[1].lower()
-        if file_ext not in (".wav", ".mp3"):
-            st.error("Unsupported file type. Please upload WAV or MP3.")
+        if file_ext not in (".wav", ".mp3", ".m4a"):
+            st.error("Unsupported file type. Please upload WAV, MP3, or M4A.")
             return
 
         tmp_dir = tempfile.gettempdir()

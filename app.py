@@ -7,7 +7,7 @@ from pipeline.exporter import save_output
 
 LANGUAGE = "en"  # Default language for transcription
 
-SUPPORTED_FORMATS = {".wav", ".mp3"}
+SUPPORTED_FORMATS = {".wav", ".mp3", ".m4a"}
 
 # Audio longer than this threshold will be chunked
 LONG_AUDIO_THRESHOLD_MINUTES = 1
