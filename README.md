@@ -8,7 +8,34 @@ The implementation focuses on engineering design rather than training a speech r
 
 The solution is designed to be modular, scalable, and production-ready, making it suitable for integration into larger AI or data processing systems.
 
----
+## Screenshots
+
+Application screenshots demonstrating the UI flow:
+
+<table>
+    <tr>
+        <td align="center">
+            <img src="screenshots/ss%20(0).png" alt="Home" width="380" />
+            <p><strong>UI: Home</strong> — Landing view showing app title and brief instructions.</p>
+        </td>
+        <td align="center">
+            <img src="screenshots/ss%20(1).png" alt="Upload and controls" width="380" />
+            <p><strong>UI: Upload & Controls</strong> — Model, language and multilingual selectors plus the audio upload control.</p>
+        </td>
+    </tr>
+    <tr>
+        <td align="center">
+            <img src="screenshots/ss%20(2).png" alt="Transcribing" width="380" />
+            <p><strong>UI: Transcribing</strong> — Spinner and progress state while the model runs.</p>
+        </td>
+        <td align="center">
+            <img src="screenshots/ss%20(3).png" alt="Results" width="380" />
+            <p><strong>UI: Results</strong> — Full transcript textarea and segmented timestamps table with download/save actions.</p>
+        </td>
+    </tr>
+</table>
+
+
 
 # Objectives
 
@@ -22,7 +49,7 @@ The pipeline provides the following functionality:
 - Support downstream NLP or LLM applications
 - Be easily deployable as an API
 
----
+
 
 # Technology Stack
 
@@ -90,7 +117,7 @@ Transcription Pipeline/
      JSON / Text Export / API
 ```
 
----
+
 
 # Pipeline Components
 
@@ -103,7 +130,7 @@ The system accepts audio files in the following formats:
 
 `later support for M4A, FLAC, OGG, and AAC can be added.`
 
----
+
 
 ## 2. Audio Validation
 
@@ -116,7 +143,6 @@ Before transcription the pipeline validates:
 
 If validation fails an appropriate error is returned.
 
----
 
 ## 3. Audio Preprocessing
 
@@ -136,7 +162,6 @@ Benefits:
 - Consistent input format
 - Reduced model errors
 
----
 
 ## 4. Speech-to-Text
 
@@ -157,7 +182,6 @@ The model returns:
 - start timestamp
 - end timestamp
 
----
 
 ## 5. Post Processing
 
@@ -168,7 +192,6 @@ The transcript is cleaned by
 - restoring punctuation
 - formatting output
 
----
 
 ## 6. Export
 
@@ -235,8 +258,11 @@ streamlit run ui_app.py
 Notes:
 - The UI calls the same pipeline code used by `app.py` and expects model files under the `models/` directory.
 - Transcription may take several minutes depending on your CPU and which Faster-Whisper model is used.
+ - The UI calls the same pipeline code used by `app.py` and expects model files under the `models/` directory.
+ - Transcription may take several minutes depending on your CPU and which Faster-Whisper model is used.
 
 ---
+
 
 # Engineering Design Decisions
 
@@ -604,4 +630,4 @@ This project demonstrates a complete engineering solution for a speech-to-text p
 
 
 ## Author
-Shahzaib Asif @ [Email](mailto:shahzaib.asif024@gmail.com)
+Made with ❤️ by Shahzaib Asif @ Email: [shahzaib.asif024@gmail.com](mailto:shahzaib.asif024@gmail.com) - Website: [shahzaibasif.github.io](https://shahzaibasif.github.io) - GitHub: [shahzaibasif](https://github.com/shahzaibasif)
