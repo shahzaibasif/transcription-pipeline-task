@@ -207,6 +207,35 @@ Hello everyone. Welcome to today's meeting. We will discuss the project roadmap.
 }
 ```
 
+## Streamlit Frontend UI
+
+A lightweight Streamlit frontend is included as `ui_app.py` to upload audio files, run the project's preprocessing and transcription pipeline, and download/save transcripts.
+
+Quick steps to run the UI locally:
+
+1. (Optional) Create and activate a virtual environment for Python 3.12.
+
+2. Install project dependencies and Streamlit:
+
+```bash
+pip install -r requirements.txt
+pip install streamlit
+```
+
+3. Ensure `ffmpeg` is installed and available on your PATH (required by `pydub`). On Windows you can download FFmpeg from https://ffmpeg.org/ and add it to PATH.
+
+4. Start the Streamlit app from the project root:
+
+```bash
+streamlit run ui_app.py
+```
+
+5. In the browser UI, upload a WAV or MP3 file, choose language/multilingual options if needed, then click "Start Transcription". You can view segments, download the transcript, or save it to the `output/` folder.
+
+Notes:
+- The UI calls the same pipeline code used by `app.py` and expects model files under the `models/` directory.
+- Transcription may take several minutes depending on your CPU and which Faster-Whisper model is used.
+
 ---
 
 # Engineering Design Decisions
@@ -511,7 +540,6 @@ Response
 }
 ```
 
----
 
 <!-- ## Security Considerations
 
@@ -568,35 +596,6 @@ This implementation assumes:
 - Internet access is only required for the initial model download. -->
 
 ---
-
-## Streamlit Frontend UI
-
-A lightweight Streamlit frontend is included as `ui_app.py` to upload audio files, run the project's preprocessing and transcription pipeline, and download/save transcripts.
-
-Quick steps to run the UI locally:
-
-1. (Optional) Create and activate a virtual environment for Python 3.12.
-
-2. Install project dependencies and Streamlit:
-
-```bash
-pip install -r requirements.txt
-pip install streamlit
-```
-
-3. Ensure `ffmpeg` is installed and available on your PATH (required by `pydub`). On Windows you can download FFmpeg from https://ffmpeg.org/ and add it to PATH.
-
-4. Start the Streamlit app from the project root:
-
-```bash
-streamlit run ui_app.py
-```
-
-5. In the browser UI, upload a WAV or MP3 file, choose language/multilingual options if needed, then click "Start Transcription". You can view segments, download the transcript, or save it to the `output/` folder.
-
-Notes:
-- The UI calls the same pipeline code used by `app.py` and expects model files under the `models/` directory.
-- Transcription may take several minutes depending on your CPU and which Faster-Whisper model is used.
 
 
 ## Conclusion
