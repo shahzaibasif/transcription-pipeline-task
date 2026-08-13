@@ -2,3 +2,5 @@ faster-whisper
 pydub
 ffmpeg-python
 soundfile
+streamlit
+static-ffmpeg
