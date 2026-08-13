@@ -276,10 +276,18 @@ def main():
         repo_url="https://github.com/shahzaibasif/transcription-pipeline-task",
     )
 
-    st.write("Upload an audio file (WAV, MP3, or M4A). The app will preprocess and transcribe it.")
+    st.write("Upload an audio file or record directly from your microphone. The app will preprocess and transcribe it.")
     st.caption("Author and repo info are in the sidebar.")
 
-    uploaded = st.file_uploader("Upload audio", type=["wav", "mp3", "m4a"])
+    source_choice = st.radio("Audio source", ["Upload file", "Record microphone"], horizontal=True)
+
+    uploaded = None
+    recorded = None
+
+    if source_choice == "Upload file":
+        uploaded = st.file_uploader("Upload audio", type=["wav", "mp3", "m4a"])
+    else:
+        recorded = st.audio_input("Record audio", key="mic_audio_input")
 
     # Place model, language, and multilingual checkbox on one row (model first)
     col_model, col_lang, col_check = st.columns([2, 2, 1])
@@ -306,16 +314,18 @@ def main():
     with col_check:
         multilingual = st.checkbox("Multilingual", value=False)
 
-    if uploaded is not None:
-        file_ext = os.path.splitext(uploaded.name)[1].lower()
+    audio_source = uploaded if uploaded is not None else recorded
+    if audio_source is not None:
+        file_name = getattr(audio_source, "name", "microphone.wav")
+        file_ext = os.path.splitext(file_name)[1].lower() or ".wav"
         if file_ext not in (".wav", ".mp3", ".m4a"):
-            st.error("Unsupported file type. Please upload WAV, MP3, or M4A.")
+            st.error("Unsupported file type. Please upload WAV, MP3, or M4A, or record audio from the microphone.")
             return
 
         tmp_dir = tempfile.gettempdir()
-        tmp_path = os.path.join(tmp_dir, f"streamlit_upload{file_ext}")
+        tmp_path = os.path.join(tmp_dir, f"streamlit_source{file_ext}")
         with open(tmp_path, "wb") as f:
-            f.write(uploaded.read())
+            f.write(audio_source.read())
 
         st.audio(tmp_path)
 
