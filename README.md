@@ -8,6 +8,15 @@ The implementation focuses on engineering design rather than training a speech r
 
 The solution is designed to be modular, scalable, and production-ready, making it suitable for integration into larger AI or data processing systems.
 
+## Live Demo
+
+Experience the app instantly — no setup required. Click the link below to launch the hosted demo on Streamlit Cloud and try uploading audio, selecting a model and language, and generating transcripts in your browser.
+
+[Start the Live App — Try it now on Streamlit Cloud »](https://transcription-pipeline.streamlit.app/)
+
+Highlights: fast CPU-friendly models, timestamped segments, downloadable TXT/JSON outputs, and an intuitive browser UI.
+
+
 ## Screenshots
 
 Application screenshots demonstrating the UI flow:
