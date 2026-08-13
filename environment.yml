@@ -1,0 +1,15 @@
+name: whisper_streamlit_env
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.12
+  - ffmpeg
+  - libsndfile
+  - pip
+  - pip:
+    - faster-whisper
+    - pydub
+    - ffmpeg-python
+    - soundfile
+    - streamlit
