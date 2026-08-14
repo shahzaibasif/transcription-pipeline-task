@@ -182,7 +182,7 @@ def _render_author_blocks(author_name: str = "Shahzaib", author_url: str | None 
 
 
 def available_models():
-    defaults = ["tiny", "base", "small", "medium",  "large"]
+    defaults = ["tiny", "base", "small", "medium"]
     # models_dir = os.path.join(os.getcwd(), "models")
     # if os.path.isdir(models_dir):
     #     for name in os.listdir(models_dir):
@@ -197,7 +197,7 @@ MODEL_SPECS = {
     "base": "base (≈74 MB)",
     "small": "small (≈244 MB)",
     "medium": "medium (≈769 MB)",
-    "large": "large (≈1550 MB)",
+    # "large": "large (≈1550 MB)",
 }
 
 # Language code → name map for dropdown
