@@ -1,5 +1,5 @@
 # Speech-to-Text Transcription Pipeline
-(Software Engineer Task @ Shahzaib Asif)
+Principal Software & AI Engineer (Task) @ Shahzaib Asif
 ## Overview
 
 This project implements a modular speech-to-text (STT) pipeline that converts spoken language from an audio file into text while preserving timestamps for each transcription segment.
