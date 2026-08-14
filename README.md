@@ -73,10 +73,11 @@ The pipeline provides the following functionality:
 # Project Structure
 
 ```
-Transcription Pipeline/
+transcription-pipeline-task/
 
 │
 ├── app.py
+├── ui_app.py (frontend)
 ├── requirements.txt
 ├── README.md
 │
